@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sistem Klinik </title>
+    <style>
+        table,tr,td {
+            border: 1px solid black;
+        }
+        thead {
+            background-color: #cccddd;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Dokter</h2>
+    <table>
+        <thead>
+            <tr>
+                <td>ID Dokter</td>
+                <td>Nama Dokter</td>
+                
+            </tr>
+        </thead>
+        <?php
+        include "koneksi2.php";
+        $query = mysqli_query($koneksi, 'SELECT * FROM dokter');
+        while ($data = mysqli_fetch_array($query)) {
+        ?>
+            <tr>
+                <td> <center><?php echo $data['id_dokter'] ?> </center></td>
+                <td><?php echo $data['nama_dokter'] ?></td>
+            </tr>
+        <?php } 
+        ?>
+    </table>
+</body>
+
+<body>
+    
+    <table>
+          <h2>Obat</h2>
+        <thead>
+            <tr>
+                <td>ID Dokter</td>
+                <td>Nama Obat</td>
+            </tr>
+        </thead>
+        <?php
+        include "koneksi2.php";
+        $query = mysqli_query($koneksi, 'SELECT * FROM obat');
+        while ($data = mysqli_fetch_array($query)) {
+        ?>
+            <tr>
+                <td> <center><?php echo $data['id_obat'] ?> </center></td>
+                <td><?php echo $data['nama_obat'] ?></td>
+            </tr>
+        <?php } 
+        ?>
+    </table>
+</body>
+
+<body>
+    <h2>Pasien</h2>
+    <table>
+        <thead>
+            <tr>
+                <td>ID Pasien</td>
+                <td>Nama Pasien</td>
+                <td>Jenis Kelamin</td>
+                <td>Umur</td>
+            </tr>
+        </thead>
+        <?php
+        include "koneksi2.php";
+        $query = mysqli_query($koneksi, 'SELECT * FROM pasien');
+        while ($data = mysqli_fetch_array($query)) {
+        ?>
+            <tr>
+                <td> <center><?php echo $data['id_pasien'] ?>    </center></td>
+                <td> <?php echo $data['nama_pasien'] ?> </td>
+                <td> <center><?php echo $data['jenis_kelamin'] ?></center></td>
+                <td> <center><?php echo $data['umur'] ?>         </center></td>
+            </tr>
+        <?php } 
+        ?>
+    </table>
+</body>
+
+<body>
+    <h2>Berobat</h2>
+    <table>
+        <thead>
+            <tr>
+                <td>ID Berobat</td>
+                <td>ID Pasien</td>
+                <td>ID Dokter</td>
+                <td>Tanggal Berobat</td>
+                <td>Keluhan Pasien</td>
+                <td>Hasil Diagnosa</td>
+                <td>Penatalaksanaan</td>
+            </tr>
+        </thead>
+        <?php
+        include "koneksi2.php";
+        $query = mysqli_query($koneksi, 'SELECT * FROM berobat');
+        while ($data = mysqli_fetch_array($query)) {
+        ?>
+            <tr>
+                <td> <center><?php echo $data['id_berobat'] ?>     </center></td>
+                <td> <center><?php echo $data['id_pasien'] ?>      </center></td>
+                <td> <center><?php echo $data['id_dokter'] ?>      </center></td>
+                <td> <center><?php echo $data['tgl_berobat'] ?>    </center></td>
+                <td> <?php echo $data['keluhan_pasien'] ?> </td>
+                <td> <?php echo $data['hasil_diagnosa'] ?> </td>
+                <td> <center><?php echo $data['penatalaksanaan'] ?></center></td>
+            </tr>
+        <?php } 
+        ?>
+    </table>
+</body>
+
+<body>
+    <h2>Resep Obat</h2>
+    <table>
+        <thead>
+            <tr>
+                <td>ID Resep</td>
+                <td>ID Berobat</td>
+                <td>ID Obat</td>
+            </tr>
+        </thead>
+        <?php
+        include "koneksi2.php";
+        $query = mysqli_query($koneksi, 'SELECT * FROM resep_obat');
+        while ($data = mysqli_fetch_array($query)) {
+        ?>
+            <tr>
+                <td> <center><?php echo $data['id_resep'] ?>   </center></td>
+                <td> <center><?php echo $data['id_berobat'] ?> </center></td>
+                <td> <center><?php echo $data['id_obat'] ?>    </center></td>
+            </tr>
+        <?php } 
+        ?>
+    </table>
+</body>
+
+<body>
+    <h2>Users</h2>
+    <table>
+        <thead>
+            <tr>
+                <td>ID Users</td>
+                <td>Username</td>
+                <td>Password Users</td>
+                <td>Nama Lengkap</td>
+            </tr>
+        </thead>
+        <?php
+        include "koneksi2.php";
+        $query = mysqli_query($koneksi, 'SELECT * FROM users');
+        while ($data = mysqli_fetch_array($query)) {
+        ?>
+            <tr>
+                <td> <center><?php echo $data['id'] ?>          </center></td>
+                <td> <?php echo $data['username'] ?>    </td>
+                <td> <?php echo $data['password'] ?>    </td>
+                <td> <?php echo $data['nama_lengkap'] ?></td>
+            </tr>
+        <?php } 
+        ?>
+    </table>
+</body>
+</html>
