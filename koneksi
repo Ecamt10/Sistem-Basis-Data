@@ -1,0 +1,13 @@
+<?php 
+$host= "localhost"; 
+$user= "adminklinik";
+$password= "312010163";
+$database= "klinik_312010163";
+
+$koneksi= mysqli_connect($host,$user,$password,$database);
+if ($koneksi == false)
+{
+echo "Koneksi gagal";
+die();
+} #else echo "Koneksi berhasil" ;
+?>
